@@ -13,16 +13,10 @@ const jshint = require("gulp-jshint");
 const notify = require("gulp-notify");
 const plumber = require("gulp-plumber");
 
-var gulp        = require('gulp');
-var deploy      = require('gulp-gh-pages');
+const {src, task}= require('gulp');
+const ghPages = require('gulp-gh-pages');
 
-/**
- * Push build to gh-pages
- */
-gulp.task('deploy', function () {
-  return gulp.src("./dist/**/*")
-    .pipe(deploy())
-});
+task('deploy', () => src('./dist/**/*').pipe(ghPages()));
 
 var path = {
   src: {
